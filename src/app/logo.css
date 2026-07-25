@@ -1,0 +1,27 @@
+.brand-logo,
+.home-contact-logo {
+  position: relative;
+  overflow: hidden;
+  background: #063b9b;
+}
+
+.brand-logo {
+  border: 1px solid rgba(14, 78, 174, 0.72);
+  box-shadow: 0 2px 8px rgba(10, 38, 96, 0.2);
+}
+
+.brand-logo img,
+.home-contact-logo img {
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+.footer-brand .brand-logo {
+  background: #063b9b;
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.home-contact-logo {
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 6px 18px rgba(91, 20, 15, 0.22);
+}
