@@ -4,6 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getNewsArticles } from "@/lib/news";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "新闻动态 | 绍兴添烨控股集团有限公司",
   description: "关注绍兴添烨控股集团有限公司的企业服务动态与最新资讯。",
