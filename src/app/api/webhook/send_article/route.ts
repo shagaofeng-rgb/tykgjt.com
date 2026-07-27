@@ -75,6 +75,10 @@ export async function POST(request: Request) {
   const authorId = asText(payload.author_id) || process.env.NEWS_DEFAULT_AUTHOR_ID?.trim() || "1";
   const imageUrl = asText(payload.image_url);
 
+  // 外部发布平台的“验证网站”请求只携带 sign 与 class_id。
+  // 该请求不应被当作一篇待发布的文章处理。
+  if (!title && !content) return result(1, "接口验证成功");
+
   if (!title) return result(0, "文章标题不能为空");
   if (!content) return result(0, "文章内容不能为空");
   if (classId !== requiredClassId) return result(0, `栏目 ID 不正确，请使用 ${requiredClassId}`);
