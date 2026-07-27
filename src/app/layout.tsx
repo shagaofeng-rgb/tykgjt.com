@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   title: "绍兴添烨控股集团有限公司 | 一站式企业服务",
   description: "立足绍兴，面向中小微企业提供工商商事、财税、知识产权及企业增值服务。",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "1024x1024" }],
-    shortcut: ["/icon.png"],
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "1024x1024" }],
+    icon: [{ url: "/icon.png?v=2", type: "image/png", sizes: "1024x1024" }],
+    shortcut: ["/icon.png?v=2"],
+    apple: [{ url: "/apple-icon.png?v=2", type: "image/png", sizes: "1024x1024" }],
   },
 };
 

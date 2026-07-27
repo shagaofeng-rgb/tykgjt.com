@@ -20,7 +20,7 @@ export function SiteHeader() {
     <header className="topbar">
       <Link href="/" className="brand" aria-label="添烨控股首页">
         <span className="brand-mark brand-logo">
-          <Image src="/images/tianye-official-logo.png" alt="添烨控股标志" fill sizes="42px" priority />
+          <Image src="/images/tianye-logo-clear.png" alt="添烨控股标志" fill sizes="52px" quality={100} priority />
         </span>
         <span>
           <b>添烨控股</b>

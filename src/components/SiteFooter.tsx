@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer>
       <Link href="/" className="brand footer-brand">
         <span className="brand-mark brand-logo">
-          <Image src="/images/tianye-official-logo.png" alt="添烨控股标志" fill sizes="42px" />
+          <Image src="/images/tianye-logo-clear.png" alt="添烨控股标志" fill sizes="52px" quality={100} />
         </span>
         <span>
           <b>添烨控股</b>

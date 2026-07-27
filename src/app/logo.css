@@ -2,26 +2,47 @@
 .home-contact-logo {
   position: relative;
   overflow: hidden;
-  background: #063b9b;
+  background: #0a4194;
+  isolation: isolate;
 }
 
 .brand-logo {
-  border: 1px solid rgba(14, 78, 174, 0.72);
-  box-shadow: 0 2px 8px rgba(10, 38, 96, 0.2);
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border: 1px solid rgba(15, 89, 191, 0.82);
+  box-shadow: 0 3px 10px rgba(8, 39, 100, 0.24);
 }
 
 .brand-logo img,
 .home-contact-logo img {
-  object-fit: cover;
-  transform: scale(1.08);
+  object-fit: contain;
+  transform: none;
 }
 
 .footer-brand .brand-logo {
-  background: #063b9b;
-  border-color: rgba(255, 255, 255, 0.34);
+  background: #0a4194;
+  border-color: rgba(255, 255, 255, 0.62);
 }
 
 .home-contact-logo {
-  border-color: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 6px 18px rgba(91, 20, 15, 0.22);
+  width: 108px;
+  height: 108px;
+  flex: 0 0 108px;
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  box-shadow: 0 8px 22px rgba(71, 18, 14, 0.24);
+}
+
+@media (max-width: 560px) {
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .home-contact-logo {
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
+  }
 }
