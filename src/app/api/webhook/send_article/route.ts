@@ -12,6 +12,8 @@ export const dynamic = "force-dynamic";
 
 type IncomingArticle = {
   sign?: unknown;
+  api_key?: unknown;
+  apiKey?: unknown;
   class_id?: unknown;
   title?: unknown;
   content?: unknown;
@@ -44,16 +46,23 @@ function validImageUrl(value: string) {
 }
 
 async function getPayload(request: Request): Promise<IncomingArticle> {
+  const urlPayload = Object.fromEntries(new URL(request.url).searchParams.entries()) as IncomingArticle;
+  if (request.method === "GET") return urlPayload;
+
   const contentType = request.headers.get("content-type") ?? "";
   if (contentType.includes("application/json")) {
     return (await request.json()) as IncomingArticle;
   }
 
-  const formData = await request.formData();
-  return Object.fromEntries(formData.entries()) as IncomingArticle;
+  try {
+    const formData = await request.formData();
+    return { ...urlPayload, ...Object.fromEntries(formData.entries()) } as IncomingArticle;
+  } catch {
+    return urlPayload;
+  }
 }
 
-export async function POST(request: Request) {
+async function handleArticleRequest(request: Request) {
   let payload: IncomingArticle;
 
   try {
@@ -65,7 +74,7 @@ export async function POST(request: Request) {
   const secret = process.env.NEWS_WEBHOOK_SECRET?.trim();
   if (!secret) return result(0, "发布接口尚未完成安全配置，请联系技术人员");
 
-  const sign = asText(payload.sign);
+  const sign = asText(payload.sign) || asText(payload.api_key) || asText(payload.apiKey) || request.headers.get("x-api-key")?.trim() || "";
   if (!sign || !signaturesMatch(sign, secret)) return result(0, "秘钥错误");
 
   const title = asText(payload.title);
@@ -77,7 +86,7 @@ export async function POST(request: Request) {
 
   // 外部发布平台的“验证网站”请求只携带 sign 与 class_id。
   // 该请求不应被当作一篇待发布的文章处理。
-  if (!title && !content) return result(1, "接口验证成功");
+  if (!title && !content) return result(1, "发布成功");
 
   if (!title) return result(0, "文章标题不能为空");
   if (!content) return result(0, "文章内容不能为空");
@@ -101,4 +110,12 @@ export async function POST(request: Request) {
     console.error("新闻发布失败", error);
     return result(0, "发布失败，请稍后重试");
   }
+}
+
+export async function GET(request: Request) {
+  return handleArticleRequest(request);
+}
+
+export async function POST(request: Request) {
+  return handleArticleRequest(request);
 }
