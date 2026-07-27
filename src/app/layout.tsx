@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./logo.css";
+import "./news.css";
 
 export const metadata: Metadata = {
   title: "绍兴添烨控股集团有限公司 | 一站式企业服务",
