@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./logo.css";
 import "./news.css";
+import "./admin.css";
+import { PageViewTracker } from "@/components/PageViewTracker";
 
 export const metadata: Metadata = {
   title: "绍兴添烨控股集团有限公司 | 一站式企业服务",
@@ -14,5 +16,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-CN"><body>{children}</body></html>;
+  return <html lang="zh-CN"><body><PageViewTracker />{children}</body></html>;
 }
