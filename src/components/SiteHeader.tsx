@@ -18,12 +18,12 @@ export function SiteHeader() {
 
   return (
     <header className="topbar">
-      <Link href="/" className="brand" aria-label="添烨控股首页">
+      <Link href="/" className="brand" aria-label="添烨控股集团首页">
         <span className="brand-mark brand-logo">
-          <Image src="/images/tianye-logo-clear.png" alt="添烨控股标志" fill sizes="52px" quality={100} priority />
+          <Image src="/images/tianye-logo-clear.png" alt="添烨控股集团标志" fill sizes="52px" quality={100} priority />
         </span>
         <span>
-          <b>添烨控股</b>
+          <b>添烨控股集团</b>
           <i>全生命周期企业服务</i>
         </span>
       </Link>
